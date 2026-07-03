@@ -1,0 +1,117 @@
+# tracking<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracking Pesanan</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f2f2f2;
+margin:0;
+padding:20px;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+h2{
+text-align:center;
+color:#0b57d0;
+}
+
+input{
+width:100%;
+padding:12px;
+font-size:16px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#0b57d0;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+}
+
+#hasil{
+margin-top:20px;
+padding:10px;
+background:#f8f8f8;
+border-radius:6px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Tracking Pesanan</h2>
+
+<input
+id="resi"
+placeholder="Masukkan Nomor Resi">
+
+<button onclick="cek()">
+Lacak
+</button>
+
+<div id="hasil"></div>
+
+</div>
+
+<script>
+
+const data={
+
+"WS250704001":{
+status:"Dalam Perjalanan",
+waktu:"05 Jul 2026 08:10"
+},
+
+"WS250704002":{
+status:"Terkirim",
+waktu:"04 Jul 2026 14:00"
+}
+
+};
+
+function cek(){
+
+let r=document.getElementById("resi").value.toUpperCase();
+
+if(data[r]){
+
+document.getElementById("hasil").innerHTML=
+"<b>Nomor Resi :</b> "+r+
+"<br><br><b>Status :</b> "+data[r].status+
+"<br><br><b>Update :</b> "+data[r].waktu;
+
+}else{
+
+document.getElementById("hasil").innerHTML=
+"Resi tidak ditemukan.";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
